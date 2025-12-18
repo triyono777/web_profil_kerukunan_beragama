@@ -24,7 +24,9 @@ class SiteSettingRequest extends FormRequest
         return [
             'site_name' => ['required', 'string'],
             'logo_path' => ['nullable', 'string'],
+            'logo' => ['nullable', 'mimes:jpg,jpeg,png,webp,svg', 'max:2048'],
             'favicon_path' => ['nullable', 'string'],
+            'favicon' => ['nullable', 'mimes:jpg,jpeg,png,webp,svg', 'max:1024'],
             'primary_color' => ['nullable', 'string'],
             'contact_email' => ['nullable', 'email'],
             'contact_phone' => ['nullable', 'string'],

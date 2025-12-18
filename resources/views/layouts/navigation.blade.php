@@ -5,8 +5,12 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ auth()->user()?->is_admin ? route('admin.dashboard') : route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    <a href="{{ auth()->user()?->is_admin ? route('admin.dashboard') : route('home') }}" class="flex items-center gap-2">
+                        @if(optional($sharedSettings)->logo_path)
+                            <img src="{{ asset('storage/'.$sharedSettings->logo_path) }}" alt="{{ optional($sharedSettings)->site_name }}" class="h-9 object-contain">
+                        @else
+                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        @endif
                     </a>
                 </div>
 
