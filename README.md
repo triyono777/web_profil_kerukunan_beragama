@@ -1,59 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Web Profil Kerukunan Umat Beragama
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Portal profil publik bertema kerukunan umat beragama dengan admin panel untuk berita, konten dinamis, menu, footer, struktur organisasi, agenda, galeri, dan dokumen.
 
-## About Laravel
+## Fitur Singkat
+- Autentikasi admin (Laravel Breeze) + middleware `admin`.
+- CRUD berita dengan status draft/published/archived, kategori, tag, cover image, meta SEO, dan featured flag.
+- CMS dinamis: menu header, footer (alamat, sosial, quick links), pengaturan situs (hero CTA, kontak, map embed), halaman statis, sections (blok konten per halaman), struktur organisasi.
+- Konten lain: program, agenda, galeri media, dokumen unduhan, pesan aspirasi kontak.
+- Halaman publik: beranda, profil, berita (search/filter), agenda, program, galeri, dokumen, kontak.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Persiapan
+Pastikan sudah terpasang: PHP 8.2+, Composer, Node.js 18+, dan database (MySQL/PostgreSQL/SQLite).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Langkah Instalasi
+```bash
+cp .env.example .env
+composer install
+php artisan key:generate
+# Atur koneksi DB di .env
+php artisan migrate --seed
+php artisan storage:link
+npm install
+npm run build   # atau npm run dev selama pengembangan
+php artisan serve
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Kredensial Admin
+- Email: `admin@kerukunan.local`
+- Password: `password`
 
-## Learning Laravel
+## Struktur Penting
+- `app/Models` – Menu, SiteSetting, Footer, Section, Page, Post, Category, Tag, Program, Agenda, MediaItem, Document, OrganizationMember, ContactMessage.
+- `app/Http/Controllers/Admin` – Dashboard + CRUD admin.
+- `app/Http/Controllers` – Halaman publik (home, berita, profil, program, agenda, galeri, dokumen, kontak).
+- `resources/views/admin` – Blade admin menggunakan `x-app-layout`.
+- `resources/views/public` + `layouts/public.blade.php` – Tampilan publik dinamis.
+- `database/seeders/DatabaseSeeder` – Data awal konten, menu, admin default.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Catatan Implementasi
+- Semua menu/header dan footer diambil dari DB dan dapat diubah via admin.
+- Profil dan konten statis memakai `pages` + `sections` (blok konten per halaman); hanya menampilkan yang aktif/published.
+- Berita hanya menampilkan status `published` di publik; alur draft → publish sesuai request.
+- Upload file tersimpan di `storage/app/public`, akses via `php artisan storage:link`.
+- Cache ringan untuk menu, footer, settings di `AppServiceProvider` (hapus otomatis saat update).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Testing Cepat
+Gunakan SQLite untuk uji cepat:
+```bash
+touch database/database.sqlite
+php artisan migrate --seed --database=sqlite
+php artisan test
+```
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Lisensi
+MIT.
