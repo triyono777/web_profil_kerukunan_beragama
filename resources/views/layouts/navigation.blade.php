@@ -34,6 +34,9 @@
                         <x-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
                             Struktur Organisasi
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.routes.index')" :active="request()->routeIs('admin.routes.*')">
+                            Info Route
+                        </x-nav-link>
                         <x-nav-link :href="route('admin.settings.edit')" :active="request()->routeIs('admin.settings.*')">
                             Pengaturan
                         </x-nav-link>
@@ -115,6 +118,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
                     Struktur Organisasi
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.routes.index')" :active="request()->routeIs('admin.routes.*')">
+                    Info Route
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.settings.edit')" :active="request()->routeIs('admin.settings.*')">
                     Pengaturan

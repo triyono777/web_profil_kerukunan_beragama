@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\OrganizationController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\ProgramController as AdminProgramController;
+use App\Http\Controllers\Admin\RouteInfoController;
 use App\Http\Controllers\Admin\SectionController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\TagController;
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::put('footer', [FooterController::class, 'update'])->name('footer.update');
         Route::get('settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SiteSettingController::class, 'update'])->name('settings.update');
+        Route::get('routes', [RouteInfoController::class, 'index'])->name('routes.index');
     });
 
 Route::middleware('auth')->group(function () {
