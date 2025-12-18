@@ -126,4 +126,25 @@
             @endforelse
         </div>
     </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold text-slate-900">Struktur Organisasi</h2>
+            <a href="{{ route('admin.organization.index') }}" class="text-indigo-600 text-sm">Kelola (admin)</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+            @forelse($organization as $member)
+                <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-sm">
+                    <div class="text-sm uppercase tracking-wide text-indigo-700">#{{ $member->sort_order ?? 0 }}</div>
+                    <div class="text-lg font-semibold text-slate-900">{{ $member->name }}</div>
+                    <div class="text-sm text-slate-600">{{ $member->position }}</div>
+                    @if($member->bio)
+                        <p class="text-sm text-slate-600 mt-2">{{ $member->bio }}</p>
+                    @endif
+                </div>
+            @empty
+                <p class="text-sm text-slate-500">Data struktur organisasi belum tersedia.</p>
+            @endforelse
+        </div>
+    </section>
 @endsection
