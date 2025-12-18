@@ -9,60 +9,20 @@
     </x-slot>
 
     <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Route Admin</h3>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm">
-                        <thead>
-                            <tr class="text-left text-gray-600 border-b">
-                                <th class="pb-2">Name</th>
-                                <th class="pb-2">Method</th>
-                                <th class="pb-2">URI</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($adminRoutes as $route)
-                                <tr class="border-b last:border-0">
-                                    <td class="py-2 font-semibold text-gray-900">{{ $route['name'] }}</td>
-                                    <td class="py-2 text-gray-700">{{ $route['method'] }}</td>
-                                    <td class="py-2 text-gray-700">/{{ $route['uri'] }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="py-3 text-gray-500 text-center">Belum ada route admin terdaftar.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-3">Route Publik</h3>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm">
-                        <thead>
-                            <tr class="text-left text-gray-600 border-b">
-                                <th class="pb-2">Name</th>
-                                <th class="pb-2">Method</th>
-                                <th class="pb-2">URI</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($publicRoutes as $route)
-                                <tr class="border-b last:border-0">
-                                    <td class="py-2 font-semibold text-gray-900">{{ $route['name'] }}</td>
-                                    <td class="py-2 text-gray-700">{{ $route['method'] }}</td>
-                                    <td class="py-2 text-gray-700">/{{ $route['uri'] }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3" class="py-3 text-gray-500 text-center">Belum ada route publik terdaftar.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 space-y-4">
+            <div class="bg-white shadow-sm sm:rounded-lg p-6 space-y-3">
+                <p class="text-sm text-gray-600">Route berikut bisa diakses publik (tanpa login). Gunakan nama ini untuk menambah menu/link.</p>
+                <div class="grid md:grid-cols-2 gap-3">
+                    @forelse($publicRoutes as $route)
+                        <div class="p-3 rounded border border-slate-200 bg-slate-50 space-y-1">
+                            <div class="text-xs uppercase text-indigo-700 tracking-wide">{{ $route['method'] }}</div>
+                            <div class="text-sm font-semibold text-gray-900">{{ $route['name'] }}</div>
+                            <div class="text-xs text-gray-600">Path: /{{ $route['uri'] }}</div>
+                            <div class="text-xs text-gray-700">{{ $labels[$route['name']] ?? 'Endpoint publik' }}</div>
+                        </div>
+                    @empty
+                        <p class="text-gray-500 text-sm">Tidak ada route publik terdaftar.</p>
+                    @endforelse
                 </div>
             </div>
         </div>

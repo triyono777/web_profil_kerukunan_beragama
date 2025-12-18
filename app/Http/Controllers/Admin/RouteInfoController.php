@@ -22,9 +22,28 @@ class RouteInfoController extends Controller
             ->sortBy('name')
             ->values();
 
-        $adminRoutes = $routes->filter(fn ($r) => str_starts_with($r['name'], 'admin.'));
-        $publicRoutes = $routes->filter(fn ($r) => ! str_starts_with($r['name'], 'admin.') && ! str_starts_with($r['name'], 'generated::'));
+        $publicRoutes = $routes->filter(function ($r) {
+            return ! str_starts_with($r['name'], 'admin.')
+                && ! str_starts_with($r['name'], 'profile.')
+                && ! str_starts_with($r['name'], 'auth.')
+                && ! str_starts_with($r['name'], 'password.')
+                && ! str_starts_with($r['name'], 'generated::');
+        })->values();
 
-        return view('admin.routes.index', compact('adminRoutes', 'publicRoutes'));
+        $labels = [
+            'home' => 'Beranda utama',
+            'profile.page' => 'Profil organisasi',
+            'pages.show' => 'Halaman statis',
+            'program.index' => 'Daftar program',
+            'posts.index' => 'Daftar berita',
+            'posts.show' => 'Detail berita',
+            'agenda.index' => 'Agenda kegiatan',
+            'gallery.index' => 'Galeri foto/video',
+            'documents.index' => 'Dokumen unduhan',
+            'contact.index' => 'Kontak & aspirasi (form)',
+            'contact.store' => 'Kirim aspirasi',
+        ];
+
+        return view('admin.routes.index', compact('publicRoutes', 'labels'));
     }
 }
