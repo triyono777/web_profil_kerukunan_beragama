@@ -7,6 +7,7 @@ use App\Models\Agenda;
 use App\Models\ContactMessage;
 use App\Models\Menu;
 use App\Models\Page;
+use App\Models\OrganizationMember;
 use App\Models\Post;
 use App\Models\Program;
 use App\Models\Section;
@@ -27,11 +28,13 @@ class DashboardController extends Controller
             'pages' => Page::count(),
             'programs' => Program::count(),
             'agenda' => Agenda::count(),
+            'organization' => OrganizationMember::count(),
         ];
 
         $latestPosts = Post::latest()->take(5)->get();
         $latestMessages = ContactMessage::latest()->take(5)->get();
+        $latestMembers = OrganizationMember::orderBy('sort_order')->take(5)->get();
 
-        return view('admin.dashboard', compact('stats', 'latestPosts', 'latestMessages'));
+        return view('admin.dashboard', compact('stats', 'latestPosts', 'latestMessages', 'latestMembers'));
     }
 }

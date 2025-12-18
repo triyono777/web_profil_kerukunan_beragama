@@ -28,6 +28,9 @@
                         <x-nav-link :href="route('admin.sections.index')" :active="request()->routeIs('admin.sections.*')">
                             Konten Dinamis
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
+                            Struktur Organisasi
+                        </x-nav-link>
                         <x-nav-link :href="route('admin.settings.edit')" :active="request()->routeIs('admin.settings.*')">
                             Pengaturan
                         </x-nav-link>
@@ -103,6 +106,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.sections.index')" :active="request()->routeIs('admin.sections.*')">
                     Konten Dinamis
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
+                    Struktur Organisasi
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.settings.edit')" :active="request()->routeIs('admin.settings.*')">
                     Pengaturan
