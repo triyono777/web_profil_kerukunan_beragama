@@ -15,10 +15,8 @@
                 <div class="grid md:grid-cols-2 gap-3">
                     @forelse($publicRoutes as $route)
                         <div class="p-3 rounded border border-slate-200 bg-slate-50 space-y-1">
-                            <div class="text-xs uppercase text-indigo-700 tracking-wide">{{ $route['method'] }}</div>
-                            <div class="text-sm font-semibold text-gray-900">{{ $route['name'] }}</div>
+                            <div class="text-sm font-semibold text-gray-900">{{ $labels[$route['name']] ?? ucfirst(str_replace('.', ' ', $route['name'])) }}</div>
                             <div class="text-xs text-gray-600">Path: /{{ $route['uri'] }}</div>
-                            <div class="text-xs text-gray-700">{{ $labels[$route['name']] ?? 'Endpoint publik' }}</div>
                         </div>
                     @empty
                         <p class="text-gray-500 text-sm">Tidak ada route publik terdaftar.</p>
