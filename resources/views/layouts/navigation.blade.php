@@ -22,6 +22,9 @@
                         <x-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.*')">
                             Menu
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.footer.edit')" :active="request()->routeIs('admin.footer.*')">
+                            Footer
+                        </x-nav-link>
                         <x-nav-link :href="route('admin.pages.index')" :active="request()->routeIs('admin.pages.*')">
                             Halaman
                         </x-nav-link>
@@ -100,6 +103,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.*')">
                     Menu
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.footer.edit')" :active="request()->routeIs('admin.footer.*')">
+                    Footer
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.pages.index')" :active="request()->routeIs('admin.pages.*')">
                     Halaman
