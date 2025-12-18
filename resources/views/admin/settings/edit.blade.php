@@ -19,7 +19,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('admin.settings.update') }}" class="space-y-4">
+                <form method="POST" action="{{ route('admin.settings.update') }}" enctype="multipart/form-data" class="space-y-4">
                     @csrf
                     @method('PUT')
 
@@ -37,14 +37,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Logo Header</label>
-                            <input type="file" name="logo" class="mt-1 w-full rounded border-gray-300">
+                            <input type="file" name="logo" accept=".png,.jpg,.jpeg,.webp,.svg" class="mt-1 w-full rounded border-gray-300">
                             @if($siteSetting->logo_path)
                                 <img src="{{ asset('storage/'.$siteSetting->logo_path) }}" alt="Logo" class="h-12 mt-2 object-contain">
                             @endif
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Favicon</label>
-                            <input type="file" name="favicon" class="mt-1 w-full rounded border-gray-300">
+                            <input type="file" name="favicon" accept=".png,.jpg,.jpeg,.webp,.svg" class="mt-1 w-full rounded border-gray-300">
                             @if($siteSetting->favicon_path)
                                 <div class="mt-2 text-sm text-gray-700">Tersimpan: {{ $siteSetting->favicon_path }}</div>
                             @endif
