@@ -78,3 +78,33 @@
     font-weight: 600;
     font-size: 0.875rem;
 }
+
+.card-theme {
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 8%, #e2e8f0);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.chip-theme {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: color-mix(in srgb, var(--accent-strong) 70%, #0f172a);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.link-accent {
+    color: var(--accent-strong);
+}
+
+.link-accent:hover {
+    color: var(--accent);
+}
+
+.hero-splash {
+    background: radial-gradient(1200px at 10% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%), radial-gradient(1400px at 90% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 55%), linear-gradient(180deg, #f8fafc, #ffffff);
+}

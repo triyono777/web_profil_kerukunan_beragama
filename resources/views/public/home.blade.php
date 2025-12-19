@@ -3,10 +3,10 @@
 @section('title', ($sharedSettings->site_name ?? 'Kerukunan').' | Beranda')
 
 @section('content')
-    <section class="bg-gradient-to-br from-indigo-100 via-sky-50 to-white border-b border-slate-200">
+    <section class="hero-splash border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
             <div class="space-y-4">
-                <p class="text-sm uppercase tracking-wide text-indigo-700">Portal Kerukunan</p>
+                <span class="pill-theme">Portal Kerukunan</span>
                 <h1 class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
                     {{ $sharedSettings->hero_title ?? 'Ruang bersama untuk narasi damai' }}
                 </h1>
@@ -22,14 +22,14 @@
                     <a href="/profil" class="px-5 py-3 rounded border border-slate-200 text-slate-700 hover:bg-slate-50">Profil Singkat</a>
                 </div>
             </div>
-            <div class="bg-white shadow-xl rounded-xl p-6 border border-indigo-50">
+            <div class="card-theme p-6">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-semibold text-slate-900">Berita Unggulan</h3>
-                    <a href="/berita" class="text-sm text-indigo-600">Lihat semua</a>
+                    <a href="/berita" class="text-sm link-accent">Lihat semua</a>
                 </div>
                 <div class="space-y-3">
                     @foreach($featuredPosts as $post)
-                        <a href="{{ route('posts.show', $post->slug) }}" class="block p-3 rounded border border-slate-100 hover:border-indigo-200 hover:bg-indigo-50/40">
+                        <a href="{{ route('posts.show', $post->slug) }}" class="block p-3 rounded border border-slate-100 hover:border-slate-300/60 hover:bg-white">
                             <div class="text-sm text-slate-500">{{ optional($post->published_at)->format('d M Y') }}</div>
                             <div class="font-semibold text-slate-900">{{ $post->title }}</div>
                             <div class="text-sm text-slate-600 line-clamp-2">{{ $post->excerpt }}</div>
@@ -44,11 +44,11 @@
         <div class="col-span-2 space-y-6">
             <div class="flex items-center justify-between">
                 <h2 class="text-xl font-semibold text-slate-900">Berita Terbaru</h2>
-                <a href="{{ route('posts.index') }}" class="text-indigo-600 text-sm">Selengkapnya</a>
+                <a href="{{ route('posts.index') }}" class="text-sm link-accent">Selengkapnya</a>
             </div>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach($latestPosts as $post)
-                    <a href="{{ route('posts.show', $post->slug) }}" class="block p-4 rounded border border-slate-200 hover:border-indigo-200 hover:shadow-sm bg-white">
+                    <a href="{{ route('posts.show', $post->slug) }}" class="card-theme block p-4 hover:-translate-y-0.5 transition">
                         <div class="text-xs text-slate-500">{{ optional($post->published_at)->format('d M Y') }}</div>
                         <div class="font-semibold text-slate-900 mt-1">{{ $post->title }}</div>
                         <div class="text-sm text-slate-600 line-clamp-2">{{ $post->excerpt }}</div>
@@ -59,12 +59,12 @@
             <div class="space-y-3">
                 <div class="flex items-center justify-between">
                     <h2 class="text-xl font-semibold text-slate-900">Agenda Terdekat</h2>
-                    <a href="{{ route('agenda.index') }}" class="text-indigo-600 text-sm">Lihat agenda</a>
+                    <a href="{{ route('agenda.index') }}" class="text-sm link-accent">Lihat agenda</a>
                 </div>
                 <div class="grid md:grid-cols-3 gap-3">
                     @forelse($agenda as $item)
-                        <div class="p-4 rounded border border-slate-200 bg-white">
-                            <div class="text-xs text-slate-500">{{ optional($item->start_at)->format('d M Y H:i') }}</div>
+                        <div class="card-theme p-4">
+                            <div class="chip-theme mb-2">{{ optional($item->start_at)->format('d M Y H:i') }}</div>
                             <div class="font-semibold text-slate-900">{{ $item->title }}</div>
                             <div class="text-sm text-slate-600">{{ $item->location }}</div>
                         </div>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="space-y-6">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm">
+            <div class="card-theme p-5">
                 <h3 class="text-lg font-semibold text-slate-900 mb-3">Program Unggulan</h3>
                 <div class="space-y-3">
                     @foreach($programs as $program)
@@ -86,20 +86,20 @@
                     @endforeach
                 </div>
             </div>
-            <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm">
+            <div class="card-theme p-5">
                 <h3 class="text-lg font-semibold text-slate-900 mb-3">Nilai & Narasi</h3>
                 <div class="space-y-2">
                     @foreach($sections as $section)
-                        <div class="p-3 rounded bg-indigo-50 border border-indigo-100">
-                            <div class="text-sm font-semibold text-indigo-800">{{ $section->title ?? $section->section_key }}</div>
+                        <div class="p-3 rounded bg-slate-50 border border-slate-200">
+                            <div class="text-sm font-semibold text-slate-900">{{ $section->title ?? $section->section_key }}</div>
                             @if($section->json_data && isset($section->json_data['items']))
-                                <ul class="text-sm text-indigo-900 list-disc list-inside">
+                                <ul class="text-sm text-slate-800 list-disc list-inside">
                                     @foreach($section->json_data['items'] as $item)
                                         <li>{{ $item }}</li>
                                     @endforeach
                                 </ul>
                             @else
-                                <p class="text-sm text-indigo-900">{{ $section->content }}</p>
+                                <p class="text-sm text-slate-800">{{ $section->content }}</p>
                             @endif
                         </div>
                     @endforeach
