@@ -8,6 +8,14 @@
     @stack('meta')
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=manrope:400,600,700&display=swap" rel="stylesheet" />
+    @if(optional($sharedSettings)->primary_color)
+        <style>
+            :root {
+                --accent: {{ $sharedSettings->primary_color }};
+                --accent-strong: {{ $sharedSettings->primary_color }};
+            }
+        </style>
+    @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 @php
