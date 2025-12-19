@@ -134,13 +134,16 @@
         </div>
         <div class="grid md:grid-cols-3 gap-4">
             @forelse($organization as $member)
-                <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-sm">
-                    <div class="text-sm uppercase tracking-wide text-indigo-700">#{{ $member->sort_order ?? 0 }}</div>
-                    <div class="text-lg font-semibold text-slate-900">{{ $member->name }}</div>
-                    <div class="text-sm text-slate-600">{{ $member->position }}</div>
-                    @if($member->bio)
-                        <p class="text-sm text-slate-600 mt-2">{{ $member->bio }}</p>
-                    @endif
+                @php
+                    $placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\"160\" height=\"160\" viewBox=\"0 0 160 160\" fill=\"none\"><rect width=\"160\" height=\"160\" rx=\"12\" fill=\"%23e2e8f0\"/><circle cx=\"80\" cy=\"62\" r=\"28\" fill=\"%23cbd5e1\"/><path d=\"M34 142c0-25.405 20.595-46 46-46s46 20.595 46 46\" stroke=\"%23cbd5e1\" stroke-width=\"12\" stroke-linecap=\"round\"/></svg>';
+                    $photo = $member->photo_path ? asset('storage/'.$member->photo_path) : $placeholder;
+                @endphp
+                <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center gap-3">
+                    <img src="{{ $photo }}" alt="{{ $member->name }}" class="h-14 w-14 rounded-full object-cover border border-slate-200 bg-slate-100">
+                    <div>
+                        <div class="text-lg font-semibold text-slate-900">{{ $member->name }}</div>
+                        <div class="text-sm text-slate-600">{{ $member->position }}</div>
+                    </div>
                 </div>
             @empty
                 <p class="text-sm text-slate-500">Data struktur organisasi belum tersedia.</p>
