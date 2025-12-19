@@ -75,6 +75,18 @@
                     <p class="text-sm leading-relaxed">{{ optional($sharedFooter)->address ?? $sharedSettings->contact_address }}</p>
                     <p class="text-sm mt-2">Telp: {{ optional($sharedFooter)->phone ?? $sharedSettings->contact_phone }}</p>
                     <p class="text-sm">Email: {{ optional($sharedFooter)->email ?? $sharedSettings->contact_email }}</p>
+                    @php
+                        $wa = optional($sharedFooter)->whatsapp ?? $sharedSettings->contact_whatsapp;
+                        $waLink = $wa ? 'https://wa.me/'.preg_replace('/[^0-9]/', '', $wa) : null;
+                    @endphp
+                    @if($waLink)
+                        <p class="text-sm">
+                            WhatsApp:
+                            <a href="{{ $waLink }}" class="hover:text-indigo-300" target="_blank" rel="noopener">
+                                {{ $wa }}
+                            </a>
+                        </p>
+                    @endif
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-3">Sosial</h3>
