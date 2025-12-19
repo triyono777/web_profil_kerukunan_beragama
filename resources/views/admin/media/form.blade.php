@@ -30,7 +30,7 @@
             <label class="block text-sm font-medium text-gray-700">Thumbnail (opsional)</label>
             <input type="file" name="thumbnail" class="mt-1 w-full rounded border-gray-300">
             @if(isset($media) && $media->thumbnail_path)
-                <img src="{{ asset('storage/'.$media->thumbnail_path) }}" alt="Thumbnail" class="mt-2 h-20 rounded object-cover">
+                <img src="{{ $media->thumbnail_url }}" alt="Thumbnail" class="mt-2 h-20 rounded object-cover">
             @endif
         </div>
     </div>

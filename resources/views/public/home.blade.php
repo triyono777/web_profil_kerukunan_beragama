@@ -108,6 +108,9 @@
         </div>
     </section>
 
+    @php
+        $mediaPlaceholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200"><rect width="320" height="200" fill="%23e5e7eb"/><g fill="%2394a3b8" font-family="Arial" font-size="16" text-anchor="middle"><text x="160" y="106">Galeri</text></g></svg>';
+    @endphp
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-semibold text-slate-900">Galeri</h2>
@@ -115,8 +118,14 @@
         </div>
         <div class="grid md:grid-cols-4 gap-4">
             @forelse($gallery as $media)
-                <div class="relative rounded-lg overflow-hidden border border-slate-200 bg-white">
-                    <div class="p-3">
+                @php
+                    $img = $media->thumbnail_url ?? $media->url ?? $mediaPlaceholder;
+                @endphp
+                <div class="relative rounded-lg overflow-hidden border border-slate-200 bg-white shadow-sm">
+                    <div class="aspect-video bg-slate-100">
+                        <img src="{{ $img }}" alt="{{ $media->title }}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3 space-y-1">
                         <div class="text-sm font-semibold text-slate-900">{{ $media->title }}</div>
                         <div class="text-xs text-slate-500">{{ ucfirst($media->type) }}</div>
                     </div>
