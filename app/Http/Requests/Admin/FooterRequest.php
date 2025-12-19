@@ -28,11 +28,11 @@ class FooterRequest extends FormRequest
             'whatsapp' => ['nullable', 'string'],
             'map_embed' => ['nullable', 'string'],
             'social_links' => ['nullable', 'array'],
-            'social_links.*.platform' => ['required_with:social_links', 'string'],
-            'social_links.*.url' => ['required_with:social_links', 'url'],
+            'social_links.*.platform' => ['nullable', 'string'],
+            'social_links.*.url' => ['nullable', 'url'],
             'quick_links' => ['nullable', 'array'],
-            'quick_links.*.label' => ['required_with:quick_links', 'string'],
-            'quick_links.*.url' => ['required_with:quick_links', 'string'],
+            'quick_links.*.label' => ['nullable', 'string'],
+            'quick_links.*.url' => ['nullable', 'string'],
             'copyright_text' => ['nullable', 'string'],
         ];
     }
