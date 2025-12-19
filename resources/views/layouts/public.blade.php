@@ -21,7 +21,10 @@
 @php
     $theme = optional($sharedSettings)->theme ?? 'aurora';
 @endphp
-<body class="bg-slate-50 text-slate-900 theme-{{ $theme }}">
+@php
+    $accent = optional($sharedSettings)->primary_color ?: '#6366f1';
+@endphp
+<body class="bg-slate-50 text-slate-900 theme-{{ $theme }}" style="--accent: {{ $accent }}; --accent-strong: {{ $accent }};">
     <div class="min-h-screen flex flex-col">
         <header class="backdrop-blur bg-white/80 border-b border-slate-200 sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
