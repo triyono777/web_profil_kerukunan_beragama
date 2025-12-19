@@ -35,7 +35,10 @@ class MenuController extends Controller
      */
     public function store(MenuRequest $request)
     {
-        Menu::create($request->validated());
+        $data = $request->validated();
+        $data['is_active'] = $request->boolean('is_active');
+
+        Menu::create($data);
         Cache::forget('menus.active');
 
         return redirect()->route('admin.menus.index')->with('status', 'Menu disimpan.');
@@ -64,7 +67,10 @@ class MenuController extends Controller
      */
     public function update(MenuRequest $request, Menu $menu)
     {
-        $menu->update($request->validated());
+        $data = $request->validated();
+        $data['is_active'] = $request->boolean('is_active');
+
+        $menu->update($data);
         Cache::forget('menus.active');
 
         return redirect()->route('admin.menus.index')->with('status', 'Menu diperbarui.');
