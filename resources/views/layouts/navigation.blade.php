@@ -38,6 +38,9 @@
                         <x-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
                             Struktur Organisasi
                         </x-nav-link>
+                        <x-nav-link :href="route('admin.media.index')" :active="request()->routeIs('admin.media.*')">
+                            Media
+                        </x-nav-link>
                         <x-nav-link :href="route('admin.routes.index')" :active="request()->routeIs('admin.routes.*')">
                             Info Route
                         </x-nav-link>
@@ -122,6 +125,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.organization.index')" :active="request()->routeIs('admin.organization.*')">
                     Struktur Organisasi
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.media.index')" :active="request()->routeIs('admin.media.*')">
+                    Media
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.routes.index')" :active="request()->routeIs('admin.routes.*')">
                     Info Route
