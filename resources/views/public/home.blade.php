@@ -3,7 +3,7 @@
 @section('title', ($sharedSettings->site_name ?? 'Kerukunan').' | Beranda')
 
 @section('content')
-    <section class="hero-splash border-b border-slate-200">
+    <section class="hero-splash border-b border-slate-200" data-parallax>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 gap-10 items-center">
             <div class="space-y-4">
                 <span class="pill-theme">Portal Kerukunan</span>
@@ -48,7 +48,7 @@
             </div>
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach($latestPosts as $post)
-                    <a href="{{ route('posts.show', $post->slug) }}" class="card-theme block p-4 hover:-translate-y-0.5 transition">
+                    <a href="{{ route('posts.show', $post->slug) }}" class="card-theme block p-4 hover:-translate-y-0.5 transition animate-fade-up">
                         <div class="text-xs text-slate-500">{{ optional($post->published_at)->format('d M Y') }}</div>
                         <div class="font-semibold text-slate-900 mt-1">{{ $post->title }}</div>
                         <div class="text-sm text-slate-600 line-clamp-2">{{ $post->excerpt }}</div>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="grid md:grid-cols-3 gap-3">
                     @forelse($agenda as $item)
-                        <div class="card-theme p-4">
+                        <div class="card-theme p-4 animate-fade-up">
                             <div class="chip-theme mb-2">{{ optional($item->start_at)->format('d M Y H:i') }}</div>
                             <div class="font-semibold text-slate-900">{{ $item->title }}</div>
                             <div class="text-sm text-slate-600">{{ $item->location }}</div>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="space-y-6">
-            <div class="card-theme p-5">
+            <div class="card-theme p-5 animate-fade-up">
                 <h3 class="text-lg font-semibold text-slate-900 mb-3">Program Unggulan</h3>
                 <div class="space-y-3">
                     @foreach($programs as $program)
@@ -86,7 +86,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="card-theme p-5">
+            <div class="card-theme p-5 animate-fade-up">
                 <h3 class="text-lg font-semibold text-slate-900 mb-3">Nilai & Narasi</h3>
                 <div class="space-y-2">
                     @foreach($sections as $section)
