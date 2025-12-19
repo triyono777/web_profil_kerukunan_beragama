@@ -135,7 +135,7 @@
         <div class="grid md:grid-cols-3 gap-4">
             @forelse($organization as $member)
                 @php
-                    $placeholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width=\"160\" height=\"160\" viewBox=\"0 0 160 160\" fill=\"none\"><rect width=\"160\" height=\"160\" rx=\"12\" fill=\"%23e2e8f0\"/><circle cx=\"80\" cy=\"62\" r=\"28\" fill=\"%23cbd5e1\"/><path d=\"M34 142c0-25.405 20.595-46 46-46s46 20.595 46 46\" stroke=\"%23cbd5e1\" stroke-width=\"12\" stroke-linecap=\"round\"/></svg>';
+                    $placeholder = 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"160\" height=\"160\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%2394a3b8\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"7\" r=\"4\" fill=\"%23cbd5e1\"/><path d=\"M5 21a7 7 0 0 1 14 0\" fill=\"%23e2e8f0\"/></svg>';
                     $photo = $member->photo_path ? asset('storage/'.$member->photo_path) : $placeholder;
                 @endphp
                 <div class="p-4 rounded-xl border border-slate-200 bg-white shadow-sm flex items-center gap-3">
