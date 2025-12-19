@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: 'Manrope', 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+    }
+
+    h1, h2, h3, h4 {
+        letter-spacing: -0.02em;
+    }
+
+    :root {
+        --accent: #6366f1;
+        --accent-strong: #4f46e5;
+        --surface: #ffffff;
+    }
+
+    body.theme-aurora {
+        --accent: #7c3aed;
+        --accent-strong: #5b21b6;
+        --surface: #ffffff;
+        background-image: radial-gradient(800px at 20% 20%, #ede9fe, #f8fafc 50%), radial-gradient(1200px at 80% 10%, #e0f2fe, #f8fafc 60%);
+    }
+
+    body.theme-luxeform {
+        --accent: #b45309;
+        --accent-strong: #92400e;
+        --surface: #0b1021;
+        background: linear-gradient(135deg, #0f172a, #1f2937);
+        color: #e5e7eb;
+    }
+
+    body.theme-nimbus {
+        --accent: #0ea5e9;
+        --accent-strong: #0284c7;
+        --surface: #ffffff;
+        background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+    }
+
+    body.theme-pulse {
+        --accent: #ef4444;
+        --accent-strong: #dc2626;
+        --surface: #0f172a;
+        background: radial-gradient(800px at 15% 20%, rgba(239, 68, 68, 0.1), transparent 50%), radial-gradient(800px at 80% 10%, rgba(59, 130, 246, 0.1), transparent 50%), #0b1224;
+        color: #e5e7eb;
+    }
+
+    body.theme-serene {
+        --accent: #22c55e;
+        --accent-strong: #16a34a;
+        --surface: #ffffff;
+        background: linear-gradient(180deg, #f0fdf4, #f8fafc);
+    }
+}
+
+.btn-theme {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded font-semibold transition;
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-theme:hover {
+    background: var(--accent-strong);
+}
+
+.pill-theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: color-mix(in srgb, var(--accent-strong) 70%, #0f172a);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.card-theme {
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--accent) 8%, #e2e8f0);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.chip-theme {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: color-mix(in srgb, var(--accent-strong) 70%, #0f172a);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.link-accent {
+    color: var(--accent-strong);
+}
+
+.link-accent:hover {
+    color: var(--accent);
+}
+
+.hero-splash {
+    background: radial-gradient(1200px at 10% 10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 50%), radial-gradient(1400px at 90% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 55%), linear-gradient(180deg, #f8fafc, #ffffff);
+}
