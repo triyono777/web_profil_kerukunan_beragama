@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SectionRequest;
 use App\Models\Section;
+use Illuminate\Support\Facades\DB;
 
 class SectionController extends Controller
 {
@@ -18,7 +19,13 @@ class SectionController extends Controller
             ->orderBy('sort_order')
             ->get();
 
-        return view('admin.sections.index', compact('sections', 'pageKey'));
+        $pageKeys = Section::select('page_key')->distinct()->orderBy('page_key')->pluck('page_key');
+        $pagesSummary = Section::select('page_key', DB::raw('count(*) as total'))
+            ->groupBy('page_key')
+            ->orderBy('page_key')
+            ->get();
+
+        return view('admin.sections.index', compact('sections', 'pageKey', 'pageKeys', 'pagesSummary'));
     }
 
     /**

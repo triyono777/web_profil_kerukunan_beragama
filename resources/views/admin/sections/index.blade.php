@@ -6,8 +6,14 @@
                 <p class="text-sm text-gray-600">Kelola blok konten per halaman. Saat ini halaman: <strong class="text-gray-900">{{ $pageKey }}</strong></p>
             </div>
             <div class="flex items-center gap-2">
-                <form method="GET">
-                    <input type="text" name="page" value="{{ $pageKey }}" class="rounded border-gray-300" placeholder="page key">
+                <form method="GET" class="flex items-center gap-2">
+                    <select name="page" class="rounded border-gray-300">
+                        @foreach($pageKeys as $key)
+                            <option value="{{ $key }}" @selected($pageKey === $key)>{{ $key }}</option>
+                        @endforeach
+                        <option value="home" @selected($pageKey === 'home')>home</option>
+                    </select>
+                    <button type="submit" class="px-3 py-2 bg-slate-100 rounded border border-slate-200 text-sm">Pilih</button>
                 </form>
                 <a href="{{ route('admin.sections.create', ['page' => $pageKey]) }}" class="px-4 py-2 bg-indigo-600 text-white rounded">Tambah Blok</a>
             </div>
@@ -16,7 +22,18 @@
 
     <div class="py-6">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white shadow-sm sm:rounded-lg p-6 space-y-4">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-700 mb-2">Ringkasan Halaman</h3>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach($pagesSummary as $summary)
+                            <a href="{{ route('admin.sections.index', ['page' => $summary->page_key]) }}" class="px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-sm {{ $pageKey === $summary->page_key ? 'font-semibold text-indigo-700' : 'text-gray-700' }}">
+                                {{ $summary->page_key }} ({{ $summary->total }})
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
                 @if (session('status'))
                     <div class="mb-4 p-3 rounded bg-emerald-50 text-emerald-700">{{ session('status') }}</div>
                 @endif
