@@ -25,7 +25,7 @@ class MediaRequest extends FormRequest
             'title' => ['required', 'string'],
             'type' => ['required', 'in:image,video'],
             'media' => ['nullable', 'file'],
-            'media_path' => ['required_without:media', 'string'],
+            'media_path' => ['required_without:media', 'nullable', 'string'],
             'thumbnail' => ['nullable', 'image', 'mimes:jpg,png,webp', 'max:2048'],
             'description' => ['nullable', 'string'],
             'is_active' => ['boolean'],
