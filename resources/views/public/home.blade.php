@@ -15,11 +15,11 @@
                 </p>
                 <div class="flex flex-wrap gap-3">
                     @if($sharedSettings?->hero_cta_link)
-                        <a href="{{ $sharedSettings->hero_cta_link }}" class="px-5 py-3 rounded bg-indigo-700 text-white shadow hover:bg-indigo-800">
+                        <a href="{{ $sharedSettings->hero_cta_link }}" class="btn-theme shadow">
                             {{ $sharedSettings->hero_cta_label ?? 'Lihat Agenda' }}
                         </a>
                     @endif
-                    <a href="/profil" class="px-5 py-3 rounded border border-indigo-200 text-indigo-700 hover:bg-indigo-50">Profil Singkat</a>
+                    <a href="/profil" class="px-5 py-3 rounded border border-slate-200 text-slate-700 hover:bg-slate-50">Profil Singkat</a>
                 </div>
             </div>
             <div class="bg-white shadow-xl rounded-xl p-6 border border-indigo-50">

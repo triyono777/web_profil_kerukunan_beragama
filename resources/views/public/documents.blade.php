@@ -16,7 +16,7 @@
                         <div class="font-semibold text-slate-900">{{ $document->title }}</div>
                         <div class="text-sm text-slate-600">{{ $document->description }}</div>
                     </div>
-                    <a href="{{ $document->file_path ? asset('storage/'.$document->file_path) : '#' }}" class="px-3 py-2 rounded bg-indigo-700 text-white text-sm">Unduh</a>
+                    <a href="{{ $document->file_path ? asset('storage/'.$document->file_path) : '#' }}" class="btn-theme text-sm">Unduh</a>
                 </div>
             @empty
                 <p class="text-slate-600">Belum ada dokumen.</p>

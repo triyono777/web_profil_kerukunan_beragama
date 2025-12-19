@@ -21,5 +21,6 @@ class SiteSetting extends Model
         'hero_subtitle',
         'hero_cta_label',
         'hero_cta_link',
+        'theme',
     ];
 }

@@ -20,7 +20,7 @@
                         <p class="text-sm text-slate-700">Lokasi: {{ $agenda->location ?? '-' }}</p>
                     </div>
                     @if($agenda->registration_link)
-                        <a href="{{ $agenda->registration_link }}" class="px-4 py-2 rounded bg-indigo-700 text-white">Daftar</a>
+                        <a href="{{ $agenda->registration_link }}" class="btn-theme">Daftar</a>
                     @endif
                 </div>
             @empty

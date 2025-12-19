@@ -28,6 +28,7 @@ class SiteSettingRequest extends FormRequest
             'favicon_path' => ['nullable', 'string'],
             'favicon' => ['nullable', 'mimes:jpg,jpeg,png,webp,svg', 'max:1024'],
             'primary_color' => ['nullable', 'string'],
+            'theme' => ['nullable', 'in:aurora,luxeform,nimbus,pulse,serene'],
             'contact_email' => ['nullable', 'email'],
             'contact_phone' => ['nullable', 'string'],
             'contact_whatsapp' => ['nullable', 'string'],

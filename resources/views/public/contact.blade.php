@@ -48,7 +48,7 @@
                     <label class="block text-sm font-medium text-slate-700">Pesan</label>
                     <textarea name="message" rows="5" class="mt-1 w-full rounded border-slate-300" required>{{ old('message') }}</textarea>
                 </div>
-                <button type="submit" class="px-4 py-2 rounded bg-indigo-700 text-white">Kirim Pesan</button>
+                <button type="submit" class="btn-theme">Kirim Pesan</button>
             </form>
         </div>
     </section>

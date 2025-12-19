@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
                 'hero_cta_label' => 'Lihat Agenda Damai',
                 'hero_cta_link' => '/agenda',
                 'map_embed' => '<iframe src="https://maps.google.com" class="w-full h-64" loading="lazy"></iframe>',
+                'theme' => 'aurora',
             ],
         );
 

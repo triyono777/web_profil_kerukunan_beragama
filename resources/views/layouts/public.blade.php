@@ -10,7 +10,10 @@
     <link href="https://fonts.bunny.net/css?family=manrope:400,600,700&display=swap" rel="stylesheet" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-slate-50 text-slate-900">
+@php
+    $theme = optional($sharedSettings)->theme ?? 'aurora';
+@endphp
+<body class="bg-slate-50 text-slate-900 theme-{{ $theme }}">
     <div class="min-h-screen flex flex-col">
         <header class="backdrop-blur bg-white/80 border-b border-slate-200 sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">

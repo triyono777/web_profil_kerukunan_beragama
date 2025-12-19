@@ -23,7 +23,7 @@
                         <option value="{{ $tag->slug }}" @selected(request('tag') === $tag->slug)>{{ $tag->name }}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="px-4 py-2 rounded bg-indigo-700 text-white">Filter</button>
+                <button type="submit" class="btn-theme">Filter</button>
             </form>
         </div>
 
