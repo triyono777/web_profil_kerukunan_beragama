@@ -32,7 +32,7 @@
                             <label class="block text-sm font-medium text-gray-700">Warna Utama</label>
                             <div class="flex items-center gap-2 mt-1">
                                 <input type="color" name="primary_color" value="{{ old('primary_color', $siteSetting->primary_color ?? '#6366f1') }}" class="h-10 w-12 rounded border border-gray-200">
-                                <input type="text" name="primary_color" value="{{ old('primary_color', $siteSetting->primary_color) }}" class="flex-1 rounded border-gray-300" placeholder="#1b4b66">
+                                <input type="text" value="{{ old('primary_color', $siteSetting->primary_color ?? '#6366f1') }}" class="flex-1 rounded border-gray-300" placeholder="#1b4b66" aria-label="Nilai warna" readonly>
                             </div>
                         </div>
                         <input type="hidden" name="theme" value="{{ old('theme', $siteSetting->theme) }}">
