@@ -86,6 +86,7 @@ class DatabaseSeeder extends Seeder
             ['label' => 'Agenda', 'url' => '/agenda', 'type' => 'internal'],
             ['label' => 'Galeri', 'url' => '/galeri', 'type' => 'internal'],
             ['label' => 'Dokumen', 'url' => '/dokumen', 'type' => 'internal'],
+            ['label' => 'Struktur Organisasi', 'url' => '/struktur-organisasi', 'type' => 'internal'],
             ['label' => 'Kontak', 'url' => '/kontak', 'type' => 'internal'],
         ];
 

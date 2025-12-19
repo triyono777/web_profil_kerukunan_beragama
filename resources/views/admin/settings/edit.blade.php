@@ -30,16 +30,12 @@
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Warna Utama</label>
-                            <input type="text" name="primary_color" value="{{ old('primary_color', $siteSetting->primary_color) }}" class="mt-1 w-full rounded border-gray-300" placeholder="#1b4b66">
+                            <div class="flex items-center gap-2 mt-1">
+                                <input type="color" name="primary_color" value="{{ old('primary_color', $siteSetting->primary_color ?? '#6366f1') }}" class="h-10 w-12 rounded border border-gray-200">
+                                <input type="text" name="primary_color" value="{{ old('primary_color', $siteSetting->primary_color) }}" class="flex-1 rounded border-gray-300" placeholder="#1b4b66">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Tema</label>
-                            <select name="theme" class="mt-1 w-full rounded border-gray-300">
-                                @foreach(['aurora' => 'Aurora (Modern & Catchy)', 'luxeform' => 'Luxeform (Elegan & Premium)', 'nimbus' => 'Nimbus (Clean & Minimalis)', 'pulse' => 'Pulse (Dinamis & Enerjik)', 'serene' => 'Serene (Tenang & Estetis)'] as $value => $label)
-                                    <option value="{{ $value }}" @selected(old('theme', $siteSetting->theme) === $value)>{{ $label }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <input type="hidden" name="theme" value="{{ old('theme', $siteSetting->theme) }}">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

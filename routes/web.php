@@ -25,6 +25,7 @@ use App\Http\Controllers\PublicDocumentController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\PublicPostController;
 use App\Http\Controllers\PublicProgramController;
+use App\Http\Controllers\PublicOrganizationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -38,6 +39,7 @@ Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index'
 Route::get('/dokumen', [PublicDocumentController::class, 'index'])->name('documents.index');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/struktur-organisasi', [PublicOrganizationController::class, 'index'])->name('organization.public');
 
 Route::middleware(['auth', 'verified', 'admin'])
     ->prefix('admin')

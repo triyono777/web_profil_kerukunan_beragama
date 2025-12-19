@@ -130,7 +130,7 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-xl font-semibold text-slate-900">Struktur Organisasi</h2>
-            <a href="{{ route('admin.organization.index') }}" class="text-indigo-600 text-sm">Kelola (admin)</a>
+            <a href="{{ route('organization.public') }}" class="text-indigo-600 text-sm">Lihat selengkapnya</a>
         </div>
         <div class="grid md:grid-cols-3 gap-4">
             @forelse($organization as $member)
