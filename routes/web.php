@@ -55,7 +55,9 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::resource('organization', OrganizationController::class);
         Route::resource('programs', AdminProgramController::class);
         Route::resource('agendas', AdminAgendaController::class);
-        Route::resource('media', AdminMediaController::class);
+        Route::resource('media', AdminMediaController::class)->parameters([
+            'media' => 'media',
+        ]);
         Route::resource('documents', AdminDocumentController::class);
         Route::resource('messages', ContactMessageController::class)->only(['index', 'show', 'destroy', 'update']);
 
