@@ -7,6 +7,13 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        @php
+            $faviconPath = optional($sharedSettings)->favicon_path;
+            $faviconUrl = $faviconPath ? asset('storage/'.$faviconPath) : asset('favicon.ico');
+            $faviconVersion = optional($sharedSettings)->updated_at?->timestamp;
+        @endphp
+        <link rel="icon" href="{{ $faviconUrl }}{{ $faviconVersion ? '?v='.$faviconVersion : '' }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=manrope:400,600,700&display=swap" rel="stylesheet" />

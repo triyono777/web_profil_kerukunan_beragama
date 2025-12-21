@@ -6,6 +6,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', optional($sharedSettings)->site_name ?? config('app.name'))</title>
     @stack('meta')
+    @php
+        $faviconPath = optional($sharedSettings)->favicon_path;
+        $faviconUrl = $faviconPath ? asset('storage/'.$faviconPath) : asset('favicon.ico');
+        $faviconVersion = optional($sharedSettings)->updated_at?->timestamp;
+    @endphp
+    <link rel="icon" href="{{ $faviconUrl }}{{ $faviconVersion ? '?v='.$faviconVersion : '' }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=manrope:400,600,700&display=swap" rel="stylesheet" />
     @if(optional($sharedSettings)->primary_color)
