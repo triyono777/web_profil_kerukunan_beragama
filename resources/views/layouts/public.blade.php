@@ -28,8 +28,11 @@
     <div class="min-h-screen flex flex-col">
         <header class="backdrop-blur bg-white/80 border-b border-slate-200 sticky top-0 z-30">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-                <a href="{{ route('home') }}" class="text-lg font-semibold tracking-tight">
-                    {{ optional($sharedSettings)->site_name ?? 'Kerukunan' }}
+                <a href="{{ route('home') }}" class="flex items-center gap-3 text-lg font-semibold tracking-tight">
+                    @if(optional($sharedSettings)->logo_path)
+                        <img src="{{ asset('storage/'.$sharedSettings->logo_path) }}" alt="{{ optional($sharedSettings)->site_name ?? 'Kerukunan' }}" class="h-9 w-9 rounded object-contain">
+                    @endif
+                    <span>{{ optional($sharedSettings)->site_name ?? 'Kerukunan' }}</span>
                 </a>
                 <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
                     @foreach($sharedMenus ?? [] as $menu)
